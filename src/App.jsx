@@ -1,8 +1,8 @@
 import {Component} from 'react'
-import AlbumComponent from './ImgAlbumComponent'
+import AlbumComponent from './AlbumsComponent'
 import Navbar from './Navbar'
 import TabsComponent from './TabsComponent'
-import GameoverComponent from './GameoverComponent'
+import GameoverComponent from './GameOverCompo'
 import './App.css'
 
 // These are the lists used in the application. You can move them to any component needed.
