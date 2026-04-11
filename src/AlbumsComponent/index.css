@@ -1,0 +1,10 @@
+.album-btn {
+  cursor: pointer;
+  outline: none;
+  border: none;
+  padding: 0;
+  background: transparent;
+}
+.album {
+  width: 90%;
+}

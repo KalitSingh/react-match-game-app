@@ -1,0 +1,22 @@
+.tabs-items {
+  color: white;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  background: transparent;
+}
+@media screen and (min-width: 576px) {
+  .tabs-items {
+    font-size: 20px;
+  }
+}
+@media screen and (min-width: 768px) {
+  .tabs-items {
+    font-size: 24px;
+  }
+}
+/* active tab styling */
+.active-tab {
+  border-bottom: 4px dotted white;
+}

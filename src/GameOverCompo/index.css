@@ -1,0 +1,68 @@
+.game-over-card-container {
+  background-image: url('https://assets.ccbp.in/frontend/react-js/match-game-score-card-sm-bg.png');
+  background-size: cover;
+  margin-top: 90px;
+  width: 80%;
+  margin-bottom: 50px;
+  border-radius: 8px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  /* this padding is fro trophy img alignment */
+  padding-top: 140px;
+}
+@media screen and (min-width: 768px) {
+  .game-over-card-container {
+    background-image: url('https://assets.ccbp.in/frontend/react-js/match-game-score-card-lg-bg.png');
+    width: 50%;
+    padding-top: 180px;
+  }
+}
+@media screen and (min-width: 992px) {
+  .game-over-card-container {
+    padding-top: 220px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .game-over-card-container {
+    padding-top: 320px;
+  }
+}
+.trophy-img {
+  width: 200px;
+  height: 160px;
+}
+.score-title {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+.score {
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+.reset-img {
+  width: 20px;
+  height: 20px;
+}
+.play-again-btn {
+  outline: none;
+  color: white;
+  width: 120px;
+  font-weight: bold;
+  height: 40px;
+  border-radius: 8px;
+  border: none;
+  background-color: #cf60c8;
+  margin-bottom: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
