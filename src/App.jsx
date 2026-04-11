@@ -273,6 +273,9 @@ class App extends Component {
       preloadingImgAtBrowserCache.src = eachObj.imageUrl
     })
   }
+  componentWillUnMount = () => {
+    clearInterval(this.timerId)
+  }
 
   // Function for Clicked Album Cards
   onClickedthumbnailsImg = rId => {
@@ -318,7 +321,7 @@ class App extends Component {
   onClickResetBtn = () => {
     clearInterval(this.timerId)
     this.setState({score: '0', timeElapsedInSec: 0, isGameOver: false})
-    setInterval(this.startTimer, 1000)
+    this.timerId = setInterval(this.startTimer, 1000)
   }
 
   // setting timer callback function
