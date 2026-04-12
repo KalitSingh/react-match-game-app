@@ -39,6 +39,31 @@ body {
     /* margin-top: 120px; */
   }
 }
+
+/* start button part */
+.game-start-btn{
+  width: 90%;
+  max-width: 300px;
+  height: 44px;
+  margin-top: 0px;
+  margin-bottom: 16px;
+  outline: none; 
+  border: none;
+  border-radius: 8px; 
+  font-weight: bold;
+  background-color: #cf60c8;
+  color: white;
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  .game-start-btn {
+    width: 60%;
+    max-width: 400px;
+    height: 52px;
+    font-size: 16px;
+  }
+}
+
 /* tab part styling */
 .tabs-container {
   list-style-type: none;

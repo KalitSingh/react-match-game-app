@@ -261,11 +261,16 @@ class App extends Component {
       score: '0',
       currentBigThumbnailId: imagesList[0].id,
       activeTabId: tabsList[0].tabId,
+      // below is for adding start btn, error feature
+      isGameStart: false,
     }
   }
 
   componentDidMount() {
-    this.timerId = setInterval(this.startTimer, 1000)
+    const {isGameOver, isGameStart} = this.state 
+    
+    // below line is saying that: agar isGameOver: false ; yani game over nhi hua ho + isGameStart: true ho tabhi timer start karna
+    !isGameOver && isGameOver ? this.timerId = setInterval(this.startTimer, 1000) : clearInterval(this.timerId)
 
     // Extra New Concept: Preloading to avoid delay in bigImage change when album gets clicked
     imagesList.forEach(eachObj => {
@@ -273,17 +278,18 @@ class App extends Component {
       preloadingImgAtBrowserCache.src = eachObj.imageUrl
     })
   }
-  componentWillUnMount = () => {
+  componentWillUnmount = () => {
     clearInterval(this.timerId)
   }
 
   // Function for Clicked Album Cards
   onClickedthumbnailsImg = rId => {
-    const {isGameOver, currentBigThumbnailId} = this.state
+    const {isGameOver, isGameStart, currentBigThumbnailId} = this.state
 
-    // if statement: agar rId match ho gai imageList ke matched object id se to score increment karo aour current bigImage ko randomly change karo
+    // Agar Start button Clicked hai (isGameStart: true hai) tabhi timer start hoga or album click honge otherwise error jayega click start btn
+    if (isGameStart){
+      // if statement: agar rId match ho gai imageList ke matched object id se to score increment karo aour current bigImage ko randomly change karo
     // else : otherwise gameover screen ke liye isGameOver: true kardo
-
     if (rId === currentBigThumbnailId && !isGameOver) {
       // logic of getting random bigThumbnailImage id from the imagesList data
       const randomNum = Math.floor(Math.random() * imagesList.length)
@@ -299,6 +305,13 @@ class App extends Component {
       this.setState({isGameOver: true})
       clearInterval(this.timerId)
     }
+    } 
+    else {
+      alert("Click Start Button to Run the GAME")
+    }
+
+
+    
   }
 
   //   filtering imagesList based on current Tab clicked and sotring/returning in a new arrayOfObjects
@@ -317,11 +330,21 @@ class App extends Component {
     this.setState({activeTabId: rTabId})
   }
 
-  // reset button onClick event
-  onClickResetBtn = () => {
-    clearInterval(this.timerId)
-    this.setState({score: '0', timeElapsedInSec: 0, isGameOver: false})
+  // Start button Event listner 
+  onClickStartBtn = () => {
+    this.setState({isGameStart: true})
+    
+    if (this.timerId) {
+      clearInterval(this.timerId)
+    }
     this.timerId = setInterval(this.startTimer, 1000)
+  }
+
+  // Play Again button onClick event
+  onClickResetBtn = () => {
+    this.setState({score: '0', timeElapsedInSec: 0, isGameOver: false, isGameStart: false})
+    clearInterval(this.timerId)
+    // this.timerId = setInterval(this.startTimer, 1000)
   }
 
   // setting timer callback function
@@ -349,7 +372,7 @@ class App extends Component {
   }
 
   render() {
-    const {isGameOver, score, currentBigThumbnailId, activeTabId} = this.state
+    const {isGameOver,isGameStart, score, currentBigThumbnailId, activeTabId} = this.state
     // below is for testing above logic part
     // console.log('Current BigThumbnail: ', currentBigThumbnailId)
     // console.log('is GameOver ? ', isGameOver, 'Score: ', score)
@@ -361,6 +384,10 @@ class App extends Component {
       eachAlbum => eachAlbum.id === currentBigThumbnailId,
     )
     const {imageUrl} = filteredClickedAlbum[0]
+
+    // start button changing text 
+    console.log(isGameStart, "GAme start")
+    const isStarted = isGameStart ? "disabled" : ""
 
     return (
       <>
@@ -377,6 +404,11 @@ class App extends Component {
           ) : (
             <>
               <img className="big-album" src={imageUrl} alt="match" />
+
+              {/* Added Start Button */}
+              {isGameStart ? <button disabled onClick={this.onClickStartBtn}  className="game-start-btn" type="button">Game Started</button> 
+              : <button onClick={this.onClickStartBtn}  className="game-start-btn" type="button">Start</button>}
+
               <ul className="tabs-container">
                 {tabsList.map(eachTab => (
                   <TabsComponent
