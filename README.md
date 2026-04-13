@@ -117,7 +117,6 @@ This project is licensed under the MIT License.
 ## 👨‍💻 Author
 
 Kalit Singh
-(Add GitHub / LinkedIn here later)
 
 
 --- 
