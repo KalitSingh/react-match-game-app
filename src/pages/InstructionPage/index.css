@@ -70,3 +70,27 @@ ul{
     background-color: transparent;
     color: white;
 } 
+
+/* built-by-kalit bottom title */
+.horizontal-rule{
+    border: 1px solid #9e9898;
+    width: 100%;
+    color: white;
+    margin: 30px 0px 20px 0px;
+    padding: 0px;
+
+}
+.built-by-kalit{
+    font-weight: bold; 
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+    color: #9e9898;
+    text-shadow: 0px 0px 5px #00000033;
+    margin-bottom: 12px;
+}
+.built-by-kalit:hover{
+    transform: scale(1.1);
+    color: #c0babb;
+    text-shadow: 0px 0px 10px #fa8ca1cc;
+}

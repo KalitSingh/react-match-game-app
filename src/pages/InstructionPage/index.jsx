@@ -91,6 +91,11 @@ const InstructionPage = () => {
                     {/* removed <Link> child replaced it via useNavigate() children */}
                     <button onClick={onClickPlayBtn} className="instruction-btn">Play !</button>
                 </div>
+                {/* bottom footer built by Kalit */}
+                <hr className="horizontal-rule"/>
+                <p className="built-by-kalit">
+                    Made with ❤️ by <strong>Kalit Singh</strong>
+                </p>
             </div>
         </>
     )

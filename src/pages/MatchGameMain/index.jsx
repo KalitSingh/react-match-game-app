@@ -430,6 +430,12 @@ class MatchGameMain extends Component {
               </ul>
             </>
           )}
+
+          {/* bottom footer built by Kalit its css is written on InstructionPage*/}
+                <hr className="horizontal-rule"/>
+                <p className="built-by-kalit">
+                    Made with ❤️ by <strong>Kalit Singh</strong>
+                </p>
         </div>
       </>
     )
