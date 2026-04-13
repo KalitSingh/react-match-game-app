@@ -41,9 +41,28 @@ imagesList.forEach((eachObj) => {
     const browserImgObj = new Image()
     browserImgObj.src = "imgurl"
 })
-
+```
 
 * Noted Point: 
     - Only use it inside componentDidMount(){} method ok.
     - Use only when you have less number of images if you are using it for 1000 images then it will slow down your complete app
     - Its Replacement is : Lazy loading + using Transition effect at loading element in css
+
+
+
+## react-router-dom (useNavigate())
+- It is a another method to implement navigation used as a replaceble of <Link> child of react-router-dom. 
+- ise implement karne ke liye import karne ke baad ise call/instanciate kardo 
+- condition based event listner function ke ander use hota hai. eventListner wale html element pe ham path aasani se assign kar sakte hai 'useNavigate()' ke instance variable ko 'path' string form me pass kar do bas ho gaya ! 
+
+- Like (Implemented in src/pages/InstructionPage) 
+
+```
+import {useNavigate} from "react-router-dom"
+
+const navigate = useNavigate()
+
+const onClickbtn = () => (isChecked ? navigate("/matchgame") : alert("pahle checkbox click karo!"))
+```
+
+- Note: jab useNavigate use karte hai to <Link> remove kar dete hai html element se
