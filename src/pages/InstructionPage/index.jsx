@@ -1,10 +1,27 @@
-import {Link} from "react-router-dom"
+import {Link, useNavigate} from "react-router-dom"
+import {useState} from "react"
 import "./index.css"
-import { useState } from "react"
+
 
 const InstructionPage = () => {
+    // calling useNavigate to implement it for play button
+    const navigate = useNavigate()
 
-    const [isChecked, setCheckboc] = useState(false)
+    // setting state
+    const [isChecked, setCheckbox] = useState(false)
+
+    // checkbox event listner 
+    const onClickCheckBox = (event) => (setCheckbox(event.target.checked))
+    
+    // Play Button Event listners + condition based navigation via 'useNavigate' child of react-router-dom 
+    const onClickPlayBtn = () => {
+        if (isChecked){
+            navigate("/matchgame")
+        } 
+        else {
+            alert("Please mark the instructions read !")
+        }
+    }
 
 
     return(
@@ -68,12 +85,11 @@ const InstructionPage = () => {
                 </ul>
                 <div className="instructions-btn-container">
                     <div className="instruction-checkbox-container">
-                        <input id="InstructionCheckbox" type="checkbox" />
+                        <input onClick={onClickCheckBox} id="InstructionCheckbox" type="checkbox" />
                         <label htmlFor="InstructionCheckbox" className="instruction-checkbox-label" >Have You Read it ?</label>
                     </div> 
-                    <Link to="/matchgame">
-                        <button className="instruction-btn">Play !</button>
-                    </Link>
+                    {/* removed <Link> child replaced it via useNavigate() children */}
+                    <button onClick={onClickPlayBtn} className="instruction-btn">Play !</button>
                 </div>
             </div>
         </>
