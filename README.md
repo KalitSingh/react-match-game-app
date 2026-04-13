@@ -11,7 +11,7 @@ A fast-paced image matching game built using React.js. Test your observation ski
 ---
 
 ## 🚀 Live Demo
-*(Coming soon — will update after deployment)*
+*https://react-match-game-app.vercel.app/*
 
 ---
 
@@ -116,7 +116,11 @@ This project is licensed under the MIT License.
 
 ## 👨‍💻 Author
 
-Kalit Singh
+Kalit Singh 
+
+Check my LinkedIn Post about React Project
+[Click here to view](https://www.linkedin.com/posts/kalit-singh_reactjs-webdevelopment-frontend-activity-7449405706086268928-zDJ_)
+
 
 
 --- 

@@ -66,3 +66,60 @@ const onClickbtn = () => (isChecked ? navigate("/matchgame") : alert("pahle chec
 ```
 
 - Note: jab useNavigate use karte hai to <Link> remove kar dete hai html element se
+
+
+### Learned about vercel.json (vercel configuration file) 
+
+* Learning of After Project Deployment on Vercel to fix error of not found 404 error while refreshing live project page
+
+- It is used to instruct vercel server.
+
+```json
+{
+  "routes": [
+    { "src": "/(.*)", "dest": "/" }
+  ]
+}
+```
+
+* Explanation: 
+- its mean live project me page refresh ho ya phir (koi new url path) "/(.*)" aaye to use "dest"(mean destination) use project ke "/" (yani index.html page pe server kardo (mean index.html page se load karo))
+
+* After deploying flow of project app 
+- Browser to vercel to your react code.
+
+* Its problem: ye config code (due to "routes") blank page load kar deta hai, so its new version is 
+
+```json
+{
+    "rewrites": [
+        {"source": "/(*)", "destination": "/"}
+    ]
+}
+```
+
+* its explanation is same as above with a little difference 
+
+**routes**: Every url request ko override kar deta hai mean ye har url request ko "/" (yani project ke only index.html file pe send kar deta hai inlcuding "/matchgame" path(main page of project ko bhi) ko bhi isilie blank page aa jata hai).
+
+- ye old/deprecated outdated style hai isiliye "blank page load problem aati hai"
+
+ 🔁 **rewrites** : 
+- ye best hai smoothly live page refresh pe same page load karke deta hai.
+- page navigation fix karta hai only (no override) 
+
+- rewrites (server-level redirect logic)
+Server request ko internally change karta hai.
+URL same rehta hai browser me but wo internally change ho jata hai
+Mostly SPA fix ke liye use kiya jata hai.
+
+👉 Example:
+
+/about → / (internally "/" yani index.html file open hogi then "react-router-dom" ke according /about page show hoga)
+
+(but browser shows /about)
+
+* its flow :
+/about → (vercel internal server) → / → React Router → About page
+
+
